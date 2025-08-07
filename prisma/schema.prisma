@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Ticket {
+  id        Int      @id @default(autoincrement())
+  numero    Int      @unique
+  comprado  Boolean  @default(false)
+  buyer     String?
+  createdAt DateTime @default(now())
+}
+
+model Pago {
+  id         Int      @id @default(autoincrement())
+  ticketIds  String   // JSON array de IDs de Ticket
+  monto      Float
+  referencia String   @unique
+  pagado     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}
