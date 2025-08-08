@@ -1,0 +1,144 @@
+---
+// Props del componente
+const { titulo, descripcion, imagen, enlace, boletos, precio } = Astro.props;
+---
+
+<a href={enlace} class="raffle-card-link">
+  <div class="raffle-card">
+    <!-- Slider main container -->
+    <div class="swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        {
+          imagen.map((img) => (
+            <div class="swiper-slide">
+              <img
+                src={img}
+                alt={`Imagen de la rifa: ${titulo}`}
+                class="raffle-image"
+              />
+            </div>
+          ))
+        }
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- If we need scrollbar -->
+      <div class="swiper-scrollbar"></div>
+    </div>
+
+    <div class="raffle-content">
+      <h3 class="raffle-title">{titulo}</h3>
+      <p class="raffle-description">{descripcion}</p>
+      <div class="raffle-info">
+        <span>Boletos: {boletos}</span>
+        <span>Precio: {precio}</span>
+      </div>
+    </div>
+  </div>
+</a>
+
+<script>
+  // core version + navigation, pagination modules:
+  import Swiper from "swiper";
+  import { Navigation, Pagination } from "swiper/modules";
+  // import Swiper and modules styles
+  import "swiper/css";
+  import "swiper/css/navigation";
+  import "swiper/css/pagination";
+
+  // init Swiper:
+  const swiper = new Swiper(".swiper", {
+    // configure Swiper to use modules
+    modules: [Navigation, Pagination],
+
+    // Optional parameters
+    direction: "horizontal",
+    loop: true,
+
+    // If we need pagination
+    pagination: {
+      el: ".swiper-pagination",
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: ".swiper-scrollbar",
+    },
+  });
+</script>
+
+<style>
+  .swiper {
+    width: 100%;
+    overflow: hidden;
+  }
+  .raffle-card-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .raffle-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .raffle-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .raffle-image {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+  }
+
+  .raffle-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .raffle-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #1a202c;
+  }
+
+  .raffle-description {
+    font-size: 1rem;
+    color: #4a5568;
+    line-height: 1.5;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+  }
+
+  .raffle-info {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: #4299e1;
+  }
+</style>

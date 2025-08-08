@@ -4,10 +4,11 @@ import logo from "../assets/favicon.jpg";
 
 <header class="navbar-container">
   <nav class="navbar">
-    <img src="favicon.jpg" class="navbar-logo" />
+    
+    <a href="/"><img src="favicon.jpg" class="navbar-logo" alt="VagoxRifas"/></a>
     <div class="navbar-links">
-      <a href="/rifas-activas">Rifas Activas</a>
-      <a href="/como-funciona">Cómo Funciona</a>
+      <a href="/rifasact">Rifas Activas</a>
+      <a href="#funciona">Cómo Funciona</a>
       <a href="/ganadores">Ganadores</a>
       <a href="/contacto" class="btn-contact">Contacto</a>
     </div>
@@ -19,24 +20,7 @@ import logo from "../assets/favicon.jpg";
   </nav>
 </header>
 
-<script>
-  // Script para manejar el menú responsive en móviles
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.querySelector('.navbar-links');
-  
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuToggle.classList.toggle('active');
-  });
-
-  // Cierra el menú si se hace clic en un enlace
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-      menuToggle.classList.remove('active');
-    });
-  });
-</script>
+<script src="../scripts/barra.js"></script>
 
 <style>
   .navbar-container {
