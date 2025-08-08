@@ -1,8 +1,165 @@
 ---
-
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import RaffleCard from '../components/RaffleCard.astro';
+
+// Datos de ejemplo para las rifas
+const rifas = [
+  {
+    titulo: 'Consola de Última Generación',
+    descripcion: 'Participa por la oportunidad de ganar la consola más codiciada del momento. ¡Unidades limitadas!',
+    imagen: '/images/consola.jpg',
+    enlace: '/rifa/consola-ultima-generacion',
+    boletos: 1500,
+    precio: '10€',
+  },
+  {
+    titulo: 'Viaje a la Playa del Caribe',
+    descripcion: 'Todo incluido para 2 personas a un destino paradisíaco. ¡No te lo pierdas!',
+    imagen: '/images/viaje.jpg',
+    enlace: '/rifa/viaje-caribe',
+    boletos: 800,
+    precio: '25€',
+  },
+  {
+    titulo: 'Computadora de Alta Gama',
+    descripcion: 'El equipo perfecto para gaming o trabajo profesional. Rendimiento insuperable.',
+    imagen: '/images/pc.jpg',
+    enlace: '/rifa/computadora-alta-gama',
+    boletos: 2000,
+    precio: '15€',
+  },
+];
 ---
 
-<Layout>
-	
+<Layout title="RifaGenial - Participa y Gana Premios Increíbles">
+  <main class="main-content">
+    
+    <Hero />
+
+    <section class="section-container">
+      <h2 class="section-title">Rifas Activas</h2>
+      <p class="section-subtitle">¡Selecciona tu rifa favorita y compra tu boleto!</p>
+      
+      <div class="rifas-grid">
+        {rifas.map((rifa) => (
+          <RaffleCard
+            titulo={rifa.titulo}
+            descripcion={rifa.descripcion}
+            imagen={rifa.imagen}
+            enlace={rifa.enlace}
+            boletos={rifa.boletos}
+            precio={rifa.precio}
+          />
+        ))}
+      </div>
+
+    </section>
+
+    <section class="section-container bg-dark">
+      <h2 class="section-title text-light">¿Cómo funciona?</h2>
+      <div class="how-it-works-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Elige tu Rifa</h3>
+          <p>Explora nuestras rifas y encuentra el premio que más te guste.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Compra Boletos</h3>
+          <p>Selecciona la cantidad de boletos que deseas. ¡Más boletos, más oportunidades!</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Espera el Sorteo</h3>
+          <p>Una vez completados los boletos, realizaremos el sorteo en vivo.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>¡Gana!</h3>
+          <p>Si tu boleto es el ganador, te contactaremos para entregarte tu premio.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
 </Layout>
+
+<style>
+  .main-content {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+  }
+  
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+  
+  .bg-dark {
+    background-color: #2d3748;
+    color: #e2e8f0;
+  }
+
+  .text-light {
+    color: #e2e8f0;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #1a202c;
+  }
+  
+  .section-subtitle {
+    font-size: 1.25rem;
+    color: #4a5568;
+    margin-bottom: 3rem;
+  }
+  
+  .rifas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .how-it-works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .step-card {
+    background-color: #4a5568;
+    padding: 2rem 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .step-card:hover {
+    transform: translateY(-10px);
+  }
+
+  .step-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4299e1;
+    margin-bottom: 1rem;
+  }
+
+  .step-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-card p {
+    color: #a0aec0;
+  }
+
+</style>

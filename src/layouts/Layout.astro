@@ -1,4 +1,5 @@
 ---
+import Footer from "../components/Footer.astro";
 import Menu from "../components/Menu.astro";
 ---
 
@@ -13,6 +14,8 @@ import Menu from "../components/Menu.astro";
 	</head>
 	<body>
 		<Menu />
+		<slot />
+		<Footer />
 	</body>
 </html>
 
