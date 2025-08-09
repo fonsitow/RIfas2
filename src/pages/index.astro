@@ -7,7 +7,11 @@ import Imagen2 from '../assets/nevera2.jpg';
 import Imagen3 from '../assets/nevera3.jpg';
 import iphone1 from '../assets/iphone1.jpg';
 import iphone2 from '../assets/iphone2.jpg';
-import iphone3 from '../assets/iphone2.jpg';
+import iphone3 from '../assets/iphone3.jpg';
+import pc from '../assets/pc1.jpg';
+import pc2 from '../assets/pc2.jpg';
+import pc3 from '../assets/pc3.jpg';
+
 
 // Datos de ejemplo para las rifas
 const rifas = [
@@ -39,12 +43,12 @@ const rifas = [
     titulo: 'Computadora de Alta Gama',
     descripcion: 'El equipo perfecto para gaming o trabajo profesional. Rendimiento insuperable.',
     imagen: [
-      Imagen.src,
-      Imagen2.src,
-      Imagen3.src,
+      pc.src,
+      pc2.src,
+      pc3.src,
     ],
     enlace: '/rifa/computadora-alta-gama',
-    boletos: 2000,
+    boletos: 999,
     precio: '15€',
   },
 ];
@@ -59,7 +63,7 @@ const rifas = [
       <h2 class="section-title">Rifas </h2>
       <p class="section-subtitle">¡Selecciona tu rifa favorita y compra tu boleto!</p>
       
-      <div class="rifas-grid">
+      <div class="rifas-grid" >
         {rifas.map((rifa) => (
           <RaffleCard
             titulo={rifa.titulo}
@@ -74,8 +78,8 @@ const rifas = [
 
     </section>
 
-    <section class="section-container bg-dark" >
-      <h2 class="section-title text-light" id="funciona">¿Cómo funciona?</h2>
+    <section id="funciona" class="section-container bg-dark" >
+      <h2 class="section-title text-light" >¿Cómo funciona?</h2>
       <div class="how-it-works-grid">
         <div class="step-card">
           <div class="step-number">1</div>
@@ -180,6 +184,5 @@ const rifas = [
     color: #a0aec0;
   }
   
- 
 
 </style>
