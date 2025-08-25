@@ -1,8 +1,6 @@
 ---
 import BoletosAsignados from "../components/BoletosAsignados.jsx";
-
-// Usar Astro.url para obtener los query params
-const cantidad = parseInt(Astro.url.searchParams.get("cantidad") ?? "1") || 1;
+const cantidad = parseInt(Astro.url.searchParams.get("cantidad") ?? "1");
 ---
 
 <html lang="es">
@@ -12,7 +10,6 @@ const cantidad = parseInt(Astro.url.searchParams.get("cantidad") ?? "1") || 1;
   </head>
   <body>
     <h1 style="text-align:center;">¡Pago exitoso!</h1>
-    <BoletosAsignados client:load cantidad={cantidad} />
+    <BoletosAsignados cantidad={cantidad} client:load  />
   </body>
 </html>
-

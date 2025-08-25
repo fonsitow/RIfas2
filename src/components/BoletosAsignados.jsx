@@ -26,7 +26,6 @@ export default function BoletosAsignados({ cantidad }) {
   }, [cantidad]);
 
   if (loading) return <p>Asignando tus boletos...</p>;
-
   if (!boletos.length) return <p>No se pudieron asignar boletos.</p>;
 
   return (
@@ -53,3 +52,4 @@ export default function BoletosAsignados({ cantidad }) {
     </div>
   );
 }
+
