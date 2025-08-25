@@ -1,0 +1,64 @@
+.contenedor {
+  max-width: 500px;
+  margin: auto;
+  padding: 1rem;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.titulo {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+
+.boleto {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.boleto:hover {
+  transform: scale(1.05);
+}
+
+.disponible {
+  background-color: green;
+}
+
+.reservado {
+  background-color: orange;
+  cursor: not-allowed;
+}
+
+.vendido {
+  background-color: red;
+  cursor: not-allowed;
+}
+
+.seleccionado {
+  background-color: blue !important;
+}
+
+.btn-reservar {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-reservar:hover {
+  opacity: 0.9;
+}

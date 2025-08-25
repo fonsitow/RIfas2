@@ -1,29 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import RifasActivas from "../components/RifasActivas.astro";
+import ListaRifas from "../components/ListaRifas.jsx";
 ---
 
-<Layout>
-  <body class="container">
-    <h1>Rifas Activas</h1>
-    <h4>Estas son las rifas que estan disponibles, aprovecha y no te quedes sin tu boleto</h4>
-    <div>
-      <RifasActivas />
-    </div>
-    
+
+   <title>Rifas Online</title>
+  </head>
+  <body>
+    <ListaRifas client:load />
   </body>
-</Layout>
+</html>
 
-<style>
-h1{
-    font-size: 64px;
-    text-align: center;
-    font-family: sans-serif;
-}
-h4 {
-    font-size: 15px;
-    text-align: center;
-    color: #0000008b
 
-}
-</style>
