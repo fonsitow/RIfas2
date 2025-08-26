@@ -6,10 +6,10 @@ const cantidad = parseInt(Astro.url.searchParams.get("cantidad") ?? "1");
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Pago exitoso</title>
+    <title>Pago Exitoso</title>
   </head>
   <body>
-    <h1 style="text-align:center;">¡Pago exitoso!</h1>
-    <BoletosAsignados cantidad={cantidad} client:load  />
+    <h1 style="text-align:center;">¡Pago confirmado!</h1>
+    <BoletosAsignados client:load cantidad={cantidad} />
   </body>
 </html>

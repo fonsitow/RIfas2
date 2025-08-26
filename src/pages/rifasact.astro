@@ -1,13 +1,20 @@
 ---
-import ComprarRifa from "../components/ComprarRifa.jsx";
+import ListaRifas from "../components/ListaRifas.jsx";
+
+const rifas = [
+  { id: 1, nombre: "Rifa del Carro", descripcion: "Un carro 0KM", precio: 5 },
+  { id: 2, nombre: "Rifa del Smartphone", descripcion: "Último modelo", precio: 2 },
+  { id: 3, nombre: "Rifa de la Consola", descripcion: "PS5 o Xbox Series X", precio: 3 }
+];
 ---
 
+<html>
   <head>
-    <title>Rifa Online</title>
+    <title>Rifas Online</title>
   </head>
-  <body>
-    <ComprarRifa client:load />
+  <body style="background:#f9f9f9; font-family:sans-serif">
+    <h1 style="text-align:center; padding:20px">Compra tu Rifa</h1>
+    <ListaRifas rifas={rifas} />
   </body>
 </html>
-
 

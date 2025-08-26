@@ -1,56 +1,72 @@
-import { useState, useEffect } from "react";
-import SelectorBoletos from "./SelectorBoletos";
-import "../styles/rifas.css";
-                                                        
-export default function ListaRifas() {
-  const [rifas, setRifas] = useState([]);
-  const [rifaSeleccionada, setRifaSeleccionada] = useState(null);
+import React, { useState } from "react";
 
-  useEffect(() => {
-    // Datos de prueba para diseño
-    setRifas([
-      {
-        id: 1,
-        titulo: "Rifa Moto 0km",
-        descripcion: "Participa por una moto totalmente nueva",
-        imagen_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Motorcycle.jpg/640px-Motorcycle.jpg",
-        precio: 5
-      },
-      {
-        id: 2,
-        titulo: "Rifa TV 55''",
-        descripcion: "Gana un Smart TV de última generación",
-        imagen_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Flat_screen_TV.jpg/640px-Flat_screen_TV.jpg",
-        precio: 2
-      }
-    ]);
-  }, []);
+export default function ListaRifas({ rifas }) {
+  const [cantidad, setCantidad] = useState(1);
+  const [selectedRifa, setSelectedRifa] = useState(null);
 
-  if (rifaSeleccionada) {
-    return (
-      <div>
-        <button className="btn-volver" onClick={() => setRifaSeleccionada(null)}>
-          ⬅ Volver a Rifas
-        </button>
-        <SelectorBoletos rifaId={rifaSeleccionada.id} titulo={rifaSeleccionada.titulo} />
-      </div>
-    );
-  }
+  const pagarBolivares = async (rifa) => {
+    const res = await fetch("/api/bolivares-checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        cantidad,
+        precioUSD: rifa.precio,
+        rifaId: rifa.id
+      })
+    });
+    const data = await res.json();
+    if (data.link) {
+      alert(`Tasa de cambio: 1 USD = ${data.tasa} VES`);
+      window.location.href = data.link;
+    } else {
+      alert("Error al generar pago");
+    }
+  };
 
   return (
-    <div className="contenedor">
-      <h1 className="titulo">Rifas Disponibles</h1>
-      <div className="lista-rifas">
-        {rifas.map((rifa) => (
-          <div key={rifa.id} className="rifa-card">
-            <img src={rifa.imagen_url} alt={rifa.titulo} className="rifa-img" />
-            <h2>{rifa.titulo}</h2>
-            <p>{rifa.descripcion}</p>
-            <p className="precio">${rifa.precio} USD</p>
-            <button onClick={() => setRifaSeleccionada(rifa)}>Ver Boletos</button>
-          </div>
-        ))}
-      </div>
+    <div style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+      gap: "20px",
+      padding: "20px"
+    }}>
+      {rifas.map((rifa) => (
+        <div key={rifa.id} style={{
+          border: "1px solid #ddd",
+          borderRadius: "10px",
+          padding: "15px",
+          boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
+          background: "#fff"
+        }}>
+          <h2>{rifa.nombre}</h2>
+          <p>{rifa.descripcion}</p>
+          <p><b>Precio:</b> ${rifa.precio} USD</p>
+
+          <input
+            type="number"
+            min="1"
+            value={cantidad}
+            onChange={(e) => setCantidad(parseInt(e.target.value))}
+            style={{ width: "100%", padding: "5px", margin: "5px 0" }}
+          />
+
+          <button
+            onClick={() => pagarBolivares(rifa)}
+            style={{
+              width: "100%",
+              padding: "10px",
+              background: "#28a745",
+              color: "#fff",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer"
+            }}
+          >
+            Pagar
+          </button>
+        </div>
+      ))}
     </div>
   );
 }
+

@@ -1,34 +1,28 @@
-<div class="hero-container">
+<div class="content_main">
+  <main>
   <div class="hero-text">
-    <h1>Gana Premios Increíbles</h1>
-    <p>Participa en nuestras rifas online. ¡Boletos asequibles, premios extraordinarios!</p>
+    <h1 class="fade-in">Gana Premios Increíbles</h1>
+    <p class="slide-up">Participa en nuestras rifas online. ¡Boletos asequibles, premios extraordinarios!</p>
     <a href="/rifasact" class="hero-btn">Ver Rifas Activas</a>
   </div>
 </div>
 
 <style>
-  .hero-container {
-    background-image: url('/images/hero-bg.jpg'); /* Asegúrate de tener una imagen de fondo */
-    background-size: cover;
-    background-position: center;
-    height: 70vh; /* Ajusta la altura a tu gusto */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    position: relative;
-    font-family: monospace;
-  }
+    
 
-  .hero-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(49, 76, 99, 0.5); /* Overlay oscuro para mejor lectura del texto */
+  main {
+    justify-content: center;
+    display: flex;
+    text-align: center  ;
+    margin: 1%;
+    border: 0.2px solid #ddd;
+    border-radius: 25px;
+    background: rgba(86, 155, 96, 0.119); /* fondo semi-transparente */
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%); /* para Safari */
+    padding: 8%;
+    transition: all 0.5s ease-in-out;
+    
   }
 
   .hero-text {
@@ -51,7 +45,7 @@
   }
 
   .hero-btn {
-    background-color: #4299e1;
+    background-color: #428849;
     color: white;
     padding: 1rem 2rem;
     text-decoration: none;
@@ -59,10 +53,22 @@
     font-size: 1.1rem;
     font-weight: bold;
     transition: background-color 0.3s ease;
+    animation: fadeIn 6s ease forwards;
   }
 
   .hero-btn:hover {
-    background-color: #2b6cb0;
+    background-color: #2bb03a;
+  }
+
+    @keyframes .hero-btn{
+    0% {
+      opacity: 0;
+      transform: scale(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(30px);
+    }
   }
 
   @media (max-width: 768px) {
@@ -73,4 +79,43 @@
       font-size: 1.2rem;
     }
   }
+
+  .fade-in {
+    font-size: 3rem;
+    animation: fadeIn 2s ease forwards;
+  }
+
+  .fade-in span {
+    color: #38a14b;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  /* PÁRRAFO ANIMADO */
+  .slide-up {
+    opacity: 0;
+    animation: slideUp 1.5s ease forwards;
+    animation-delay: 0.5s;
+  }
+
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: scale(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(30px);
+    }
+  }
+
+
+
 </style>
