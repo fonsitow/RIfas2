@@ -1,20 +1,45 @@
 ---
-import ListaRifas from "../components/ListaRifas.jsx";
-
-const rifas = [
-  { id: 1, nombre: "Rifa del Carro", descripcion: "Un carro 0KM", precio: 5 },
-  { id: 2, nombre: "Rifa del Smartphone", descripcion: "Último modelo", precio: 2 },
-  { id: 3, nombre: "Rifa de la Consola", descripcion: "PS5 o Xbox Series X", precio: 3 }
-];
+import { supabase } from "../lib/supabaseClient";
+import RifaGrid from "../react/RifaGrid.jsx";
+const { data: rifas } = await supabase.from("rifas").select("*").order("created_at", { ascending: false });
 ---
 
-<html>
+
   <head>
-    <title>Rifas Online</title>
+    <title>Rifas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root{
+        --bg:#ffffff; --card:#fff; --text:#1f2937; --muted:#6b7280; --primary:#0ea5e9; --primary-600:#0284c7; --ring:rgba(14,165,233,.25);
+      }
+      body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+      .container{max-width:1100px;margin:0 auto;padding:24px}
+      h1{margin:0 0 12px}
+      .sub{color:var(--muted);margin:0 0 24px}
+      .grid{
+        display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+      }
+      .card{
+        background:var(--card);border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.06);
+        display:flex;flex-direction:column;border:1px solid #eef0f6
+      }
+      .card img{width:100%;height:180px;object-fit:cover}
+      .card-body{padding:16px;display:flex;flex-direction:column;gap:8px}
+      .title{font-weight:700;font-size:18px}
+      .desc{color:var(--muted);font-size:14px;min-height:40px}
+      .price{font-weight:700}
+      .btn{
+        background:var(--primary);border:none;color:#fff;border-radius:10px;padding:10px 14px;cursor:pointer;
+        transition:.2s box-shadow,.2s transform
+      }
+      .btn:hover{background:var(--primary-600);box-shadow:0 0 0 8px var(--ring);transform:translateY(-1px)}
+    </style>
   </head>
-  <body style="background:#f9f9f9; font-family:sans-serif">
-    <h1 style="text-align:center; padding:20px">Compra tu Rifa</h1>
-    <ListaRifas rifas={rifas} />
+  <body>
+    <div class="container">
+      <h1>Rifas disponibles</h1>
+      <p class="sub">Elige tu rifa, selecciona la cantidad de números (1–999) y paga por Pago Móvil.</p>
+      <RifaGrid client:load rifas={rifas ?? []} />
+    </div>
   </body>
 </html>
-
