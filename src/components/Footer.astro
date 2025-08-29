@@ -3,166 +3,189 @@ import { Icon } from "astro-icon/components";
 import Logo from "../assets/favicon.jpg";
 ---
 
-<footer>
+<footer id="footer">
   <div class="footer-container">
     <div class="footer-content">
-      <div class="footer-section">
+      <div class="footer-section about animate-fade-up">
         <h3>Sobre Nosotros</h3>
         <p>
-          Somos la plataforma líder en rifas online, ofreciendo premios
-          increíbles y una experiencia segura y transparente para todos nuestros
-          participantes.
+          Plataforma líder en rifas online, con premios increíbles y una
+          experiencia segura y transparente.
         </p>
       </div>
-      <div class="footer-section">
+      <nav
+        class="footer-section links animate-fade-up delay-1"
+        aria-label="Enlaces rápidos"
+      >
         <h3>Enlaces Rápidos</h3>
-        <ul class="footer-links">
+        <ul>
           <li><a href="/rifasact">Rifas Activas</a></li>
-          <li><a href="#">Inicio</a></li>
+          <li><a href="/">Inicio</a></li>
           <li><a href="/ganadores">Referencias</a></li>
         </ul>
-      </div>
-      <div class="footer-section">
-        <h3 class="seguir">Síguenos</h3>
-        <ul class="footer-social">
+      </nav>
+      <div class="footer-section social animate-fade-up delay-2">
+        <h3>Síguenos</h3>
+        <ul>
           <li>
-            <a href="https://www.tiktok.com/@rifasvagox1?_t=ZM-8zBlSMnL03Z&_r=1"
-              ><Icon name="ri:tiktok-line" class="icon" />
+            <a href="https://www.tiktok.com/@rifasvagox1">
+              <Icon name="ri:tiktok-line" class="icon" />
             </a>
           </li>
           <li>
-            <a
-              href="https://www.instagram.com/rifasvagox?igsh=MmE0aDR4cXN1dG90&utm_source=qr"
-              ><Icon name="ri:instagram-line" class="icon" /></a>
+            <a href="https://www.instagram.com/rifasvagox">
+              <Icon name="ri:instagram-line" class="icon" />
+            </a>
           </li>
-          <li><a href=""><Icon name="ri:whatsapp-line" class="icon" /></a></li>
+          <li>
+            <a href="https://wa.me/+5804244698842">
+              <Icon name="ri:whatsapp-line" class="icon" />
+            </a>
+          </li>
         </ul>
       </div>
-      <div class="logo-section">
-        <img src={Logo.src} alt="Logo" class="logo" />
-      </div>
     </div>
-    <div class="footer-bottom">
+    <div class="footer-bottom animate-fade-up delay-3">
       <p>&copy; 2025 VagoxRifas. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>
 
 <style>
-  .logo-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* Reset básico para listas */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
-  .logo {
-    width: 128px; /* Ajusta el tamaño del logo */
-    height: 128px;
-    border: 5px solid #31313164;
-    border-radius: 15px;
+
+  a {
+    text-decoration: none;
+    color: inherit;
   }
+
+  a:hover,
+  a:focus {
+    color: #47e142;
+    outline: none;
+  }
+
   .footer-container {
-    background-color: rgb(254, 254, 254); 
-    color: #000000; 
-    padding: 1rem;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Helvetica Neue", Arial, sans-serif;
+    background-color: #fff;
+    color: #222;
+    font-family: "Montserrat", sans-serif;
+    padding: 3rem 1.5rem 2rem;
+    margin: 0 auto;
   }
 
   .footer-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    max-width: 1200px;
-    gap: 2rem;
+    gap: 3rem;
   }
 
   .footer-section {
-    flex: 1 1 250px; /* Permite que las secciones se adapten y crezcan */
+    flex: 1 1 250px;
   }
 
   .footer-section h3 {
-    color: #47e142; /* Un color de acento para los títulos */
-    font-size: 1.5rem;
+    font-weight: 700;
+    font-size: 1.4rem;
     margin-bottom: 1rem;
-  
+    color: #47e142;
   }
 
-  .footer-section p {
+  .footer-section.about p {
     font-size: 1rem;
-    line-height: 1.5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: start;
+    line-height: 1.6;
+    color: #555;
   }
 
-   .footer-links{
-    list-style: none;
-    padding: 0;
-  }
-
-  .footer-section ul li {
+  .footer-section.links ul li {
     margin-bottom: 0.75rem;
   }
 
-  .footer-section a {
-    color: #000000;
-    text-decoration: none;
-    transition: color 0.3s ease;
-     
-  }
-
-  .footer-section a:hover {
-    color: #42e17a; /* Cambia el color al pasar el ratón */
-  }
-
-  .seguir {
+  .footer-section.social ul {
     display: flex;
-    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .footer-section.social a {
+    display: inline-flex;
     align-items: center;
-  }
-  .footer-social {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    list-style: none;
     justify-content: center;
-    align-items: center;
+    color: #555;
+    font-size: 1.8rem;
+    transition:
+      color 0.3s ease,
+      transform 0.3s ease;
   }
 
-  .footer-social a {
-    color: #000000;
-    font-size: 1.5rem;
-    transition: color 0.3s;
+  .footer-section.social a:hover,
+  .footer-section.social a:focus {
+    color: #47e142;
+    transform: scale(1.15) rotate(5deg);
   }
 
-  .footer-social a:hover {
-    color: #61ff4f; /* Color acento */
+  .icon {
+    width: 28px;
+    height: 28px;
   }
 
-  .footer-bottom p {
-    font-size: 0.875rem;
-    color: #000000;
+  .footer-bottom {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #999;
   }
 
-  /* Media Queries para responsividad */
+  /* Animaciones CSS puras */
+  @keyframes fadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-up {
+    opacity: 0;
+    animation-name: fadeUp;
+    animation-fill-mode: forwards;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+  }
+
+  .delay-1 {
+    animation-delay: 0.3s;
+  }
+
+  .delay-2 {
+    animation-delay: 0.6s;
+  }
+
+  .delay-3 {
+    animation-delay: 0.9s;
+  }
+
+  /* Responsividad */
   @media (max-width: 768px) {
     .footer-content {
       flex-direction: column;
+      gap: 2rem;
       text-align: center;
     }
 
     .footer-section {
-      margin-bottom: 2rem;
+      flex: none;
     }
 
-    .footer-social {
+    .footer-section.social ul {
       justify-content: center;
     }
-  }
-
-  .icon {
-    width: 32px;
-    height: 32px;
   }
 </style>

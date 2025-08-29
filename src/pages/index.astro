@@ -1,82 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import RaffleCard from '../components/tarjeta.astro';
-import Imagen from '../assets/nevera1.jpg';
-import Imagen2 from '../assets/nevera2.jpg';
-import Imagen3 from '../assets/nevera3.jpg';
-import iphone1 from '../assets/iphone1.jpg';
-import iphone2 from '../assets/iphone2.jpg';
-import iphone3 from '../assets/iphone3.jpg';
-import pc from '../assets/pc1.jpg';
-import pc2 from '../assets/pc2.jpg';
-import pc3 from '../assets/pc3.jpg';
-
-
-// Datos de ejemplo para las rifas
-const rifas = [
-  {
-    titulo: 'Nevera Inteligente Samsung',
-    descripcion: 'Participa por la oportunidad de ganar la nevera mejor calificada del momento',
-    imagen : [
-      Imagen.src,
-      Imagen2.src,
-      Imagen3.src,
-    ],
-    enlace: '/rifa/consola-ultima-generacion',
-    boletos: 999,
-    precio: '10€',
-  },
-  {
-    titulo: 'Iphone 16',
-    descripcion: 'No te pierdas, de la oportunidad de ganarte el nuevo Iphone 16.',
-    imagen: [
-      iphone1.src,
-      iphone2.src,
-      iphone3.src,
-    ],
-    enlace: '/rifa/viaje-caribe',
-    boletos: 999,
-    precio: '8€',
-  },
-  {
-    titulo: 'Computadora de Alta Gama',
-    descripcion: 'El equipo perfecto para gaming o trabajo profesional. Rendimiento insuperable.',
-    imagen: [
-      pc.src,
-      pc2.src,
-      pc3.src,
-    ],
-    enlace: '/rifa/computadora-alta-gama',
-    boletos: 999,
-    precio: '15€',
-  },
-];
+import Section2 from '../components/Section2.astro';
 ---
 
 <Layout>
+
   <main class="main-content">
     
     <Hero />
 
-    <section class="section-container">
-      <h2 class="section-title">Rifas </h2>
-      <p class="section-subtitle">¡Selecciona tu rifa favorita y compra tu boleto!</p>
-      
-      <div class="rifas-grid" >
-        {rifas.map((rifa) => (
-          <RaffleCard
-            titulo={rifa.titulo}
-            descripcion={rifa.descripcion}
-            imagen={rifa.imagen}
-            enlace={rifa.enlace}
-            boletos={rifa.boletos}
-            precio={rifa.precio}
-          />
-        ))}
-      </div>
-
-    </section>
+    <Section2 />
 
     <section id="funciona" class="funciona1" >
       <h2 class="titulo" >¿Cómo funciona?</h2>
@@ -105,30 +39,24 @@ const rifas = [
     </section>
 
   </main>
+ 
 </Layout>
 
+
+
 <style>
-  h2{
-    font-family: monospace;
-  }
-  h3{
-    font-family: monospace;
-    color: #030303b5;
-  }
+
   .titulo {
     text-align: center;
     font-size: 32px;
     color: #000000;
-    font-family: monospace;
   }
+
   .funciona1 {
     background: rgba(36, 196, 36, 0.119); /* fondo semi-transparente */
     padding: 32px;
     box-shadow: inset 0 4px 35px rgba(0, 39, 0, 0.619);
-  }
-  .main-content {
-    padding-top: 2rem;
-    padding-bottom: 3rem;
+    font-family: 'Montserrat', sans-serif;
   }
   
   .section-container {
@@ -136,6 +64,7 @@ const rifas = [
     margin: 0 auto;
     padding: 3rem 1.5rem;
     text-align: center;
+    
   }
   
   .bg-dark {
@@ -204,5 +133,6 @@ const rifas = [
     font-size: 
   }
   
-
+  
 </style>
+

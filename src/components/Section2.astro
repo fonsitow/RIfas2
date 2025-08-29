@@ -1,0 +1,152 @@
+---
+import Imagen from '../assets/rifa1.jpg';
+--- 
+
+<a href="/rifasact" class="proxima-rifa-link" aria-label="Ir a Rifas Activas">
+  <section id="proxima-rifa" class="proxima-rifa">
+    <h2 class="anim-item">¡Gran Rifa Inaugural!</h2>
+    <p class="anim-item">
+      Prepárate para participar en nuestra primera y emocionante rifa. Por ser nuestro lanzamiento, ¡el premio es espectacular!
+    </p>
+
+    <div class="rifa-detalle anim-item">
+      <h3>Cadenas de oro certificadas.</h3>
+      <img src={Imagen.src} alt="Imagen de un viaje a la playa" />
+      <p>
+        Gana dos cadenas de oro certificadas, perfectas para cualquier ocasión. ¡No te pierdas esta oportunidad única de ganar un premio increíble! (el premio incluye 5 cajas de cerveza)
+      </p>
+      <ul>
+        <li><strong>Fecha del sorteo:</strong> [fecha por definir]</li>
+        <li><strong>Precio del boleto:</strong> 125bs</li>
+        <li><strong>Boletos disponibles:</strong> 999</li>
+      </ul>
+    </div>
+  </section>
+</a>
+
+<style>
+  /* Quitar estilos por defecto del enlace */
+  .proxima-rifa-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    max-width: 900px;
+    margin: 40px auto;
+    border-radius: 12px;
+    outline: none;
+  }
+
+  /* Contenedor principal */
+  .proxima-rifa {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f8f9fa;
+    padding: 60px 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    text-align: center;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    
+  }
+
+  /* Sombra y escala al hover/focus */
+  .proxima-rifa-link:hover .proxima-rifa,
+  .proxima-rifa-link:focus .proxima-rifa {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transform: translateY(-5px);
+  }
+
+  /* Animación inicial: elementos ocultos y desplazados */
+  .anim-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  /* Animación activa: elementos visibles y en posición */
+  .anim-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Título principal */
+  .proxima-rifa h2 {
+    font-size: 2.4em;
+    margin-bottom: 15px;
+    color: #222;
+  }
+
+  /* Párrafo introductorio */
+  .proxima-rifa > p {
+    font-size: 1.2em;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: #555;
+  }
+
+  /* Contenedor detalle */
+  .rifa-detalle {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  }
+
+  .rifa-detalle h3 {
+    color: #24bd48;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+  }
+
+  .rifa-detalle img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    transition: transform 0.4s ease;
+  }
+
+  /* Zoom suave en imagen al hover/focus del enlace */
+  .proxima-rifa-link:hover .rifa-detalle img,
+  .proxima-rifa-link:focus .rifa-detalle img {
+    transform: scale(1.05);
+  }
+
+  .rifa-detalle p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+
+  .rifa-detalle ul {
+    list-style: none;
+    padding: 0;
+    color: #444;
+  }
+
+  .rifa-detalle ul li {
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const animItems = document.querySelectorAll('.anim-item');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // animar solo una vez
+        }
+      });
+    }, {
+      threshold: 0.2 // 20% visible para activar
+    });
+
+    animItems.forEach(item => observer.observe(item));
+  });
+</script>

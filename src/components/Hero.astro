@@ -1,124 +1,202 @@
 <div class="content_main">
   <main>
-  <div class="hero-text">
-    <h1 class="fade-in">Gana Premios Increíbles</h1>
-    <p class="slide-up">Participa en nuestras rifas online. ¡Boletos asequibles, premios extraordinarios!</p>
-    <a href="/rifasact" class="hero-btn">Ver Rifas Activas</a>
-  </div>
+    <section class="hero-section">
+      <div class="glass-container">
+        <h1 class="fade-in">
+          <span>Gana Premios Increíbles</span>
+        </h1>
+        <p class="slide-up">
+          Participa en nuestras rifas online. ¡Boletos asequibles, premios extraordinarios!
+        </p>
+        <a href="/rifasact" class="hero-btn">Ver Rifas Activas</a>
+      </div>
+    </section>
+  </main>
 </div>
 
 <style>
-    
-
-  main {
-    justify-content: center;
-    display: flex;
-    text-align: center  ;
-    margin: 1%;
-    border: 0.2px solid #ddd;
-    border-radius: 25px;
-    background: rgba(56, 148, 70, 0.288); /* fondo semi-transparente */
-    backdrop-filter: blur(10px) saturate(120%);
-    -webkit-backdrop-filter: blur(10px) saturate(120%); /* para Safari */
-    padding: 8%;
-    transition: all 0.5s ease-in-out;
-    
+  /* Reset y base */
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
   }
 
-  .hero-text {
-    position: relative;
-    z-index: 10;
-    max-width: 800px;
+  main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #2a7a2a, #38a14b);
+    overflow: hidden;
     padding: 1rem;
   }
 
-  .hero-text h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  .hero-section {
+    width: 100%;
+    max-width: 900px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .hero-text p {
+  /* Caja vidrio (glassmorphism) */
+  .glass-container {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 25px;
+    padding: 3rem 4rem;
+    box-shadow:
+      0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    text-align: center;
+    color: #e6ffe6;
+    max-width: 100%;
+  }
+
+  .glass-container h1 {
+    font-size: 3.8rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-shadow:
+      0 0 10px rgba(72, 136, 72, 0.8),
+      0 0 20px rgba(72, 136, 72, 0.6);
+  }
+
+  .glass-container h1 span {
+    color: #a0f0a0;
+    text-shadow:
+      0 0 15px #a0f0a0,
+      0 0 30px #a0f0a0;
+  }
+
+  .glass-container p {
     font-size: 1.5rem;
-    margin-bottom: 2rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
   }
 
   .hero-btn {
-    background-color: #428849;
+    background: linear-gradient(45deg, #38a14b, #2bb03a);
     color: white;
-    padding: 1rem 2rem;
+    padding: 1.2rem 3rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    box-shadow:
+      0 0 10px #38a14b,
+      0 0 20px #2bb03a;
+    transition: all 0.3s ease;
     text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    opacity: 0%;
-    animation: fadeIn 1.5s ease forwards;
-    animation-delay: 0.6s;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
   }
 
-    @keyframes .hero-btn{
+  .hero-btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      60deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.3) 100%
+    );
+    transform: rotate(25deg);
+    animation: shine 3s linear infinite;
+    pointer-events: none;
+  }
+
+  .hero-btn:hover,
+  .hero-btn:focus {
+    background: linear-gradient(45deg, #2bb03a, #1f7a1f);
+    box-shadow:
+      0 0 15px #2bb03a,
+      0 0 30px #1f7a1f;
+    transform: scale(1.05);
+    outline: none;
+  }
+
+  @keyframes shine {
     0% {
-      opacity: 0;
-      transform: scale(20px);
+      transform: rotate(25deg) translateX(-100%);
     }
     100% {
-      opacity: 1;
-      transform: scale(30px);
+      transform: rotate(25deg) translateX(100%);
     }
   }
 
-  
-  .hero-btn:hover {
-    background-color: #2bb03a;
-  }
-
-  @media (max-width: 768px) {
-    .hero-text h1 {
-      font-size: 2.5rem;
-    }
-    .hero-text p {
-      font-size: 1.2rem;
-    }
-  }
-
+  /* Animaciones de texto */
   .fade-in {
-    font-size: 3rem;
-    animation: fadeIn 2s ease forwards;
+    opacity: 0;
+    animation: fadeInUp 1.8s ease forwards;
   }
 
-  .fade-in span {
-    color: #38a14b;
-  }
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  /* PÁRRAFO ANIMADO */
   .slide-up {
     opacity: 0;
-    animation: slideUp 1.5s ease forwards;
-    animation-delay: 0.5s;
+    animation: slideUp 1.8s ease forwards;
+    animation-delay: 0.4s;
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
   }
 
   @keyframes slideUp {
     0% {
       opacity: 0;
-      transform: scale(20px);
+      transform: translateY(30px);
     }
     100% {
       opacity: 1;
-      transform: scale(30px);
+      transform: translateY(0);
     }
   }
 
+  /* Responsividad */
+  @media (max-width: 768px) {
+    main {
+      padding: 1rem;
+    }
 
+    .hero-section {
+      padding: 1rem;
+    }
 
+    .glass-container {
+      padding: 2rem 2.5rem;
+    }
+
+    .glass-container h1 {
+      font-size: 2.8rem;
+    }
+
+    .glass-container p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-btn {
+      font-size: 1.1rem;
+      padding: 1rem 2.5rem;
+    }
+  }
 </style>

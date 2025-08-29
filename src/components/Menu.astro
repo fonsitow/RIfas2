@@ -1,18 +1,20 @@
 ---
 import Logo from "../assets/favicon.jpg";
 ---
+<body class="fondo">
 
 <header class="navbar-container">
   <nav class="navbar">
-    
-    <a href="/"><img src={Logo.src} class="navbar-logo" alt="VagoxRifas"/></a>
-    <div class="navbar-links">
+    <a href="/">
+      <img src={Logo.src} alt="VagoxRifas" class="navbar-logo" />
+    </a>
+    <div class="navbar-links" id="navbar-links">
       <a href="/rifasact">Rifas Activas</a>
       <a href="#funciona">Cómo Funciona</a>
       <a href="/ganadores">Referencias</a>
-      <a href="/contacto" class="btn-contact">Contacto</a>
+      <a href="#footer" class="btn-contact">Contacto</a>
     </div>
-    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú de navegación">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navbar-links">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
@@ -20,132 +22,172 @@ import Logo from "../assets/favicon.jpg";
   </nav>
 </header>
 
-<script src="../scripts/barra.js"></script>
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navbarLinks = document.getElementById('navbar-links');
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = navbarLinks.classList.toggle('open');
+    menuToggle.classList.toggle('active');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
+</script>
+
+</body>
+
 
 <style>
-  .navbar-container {
- background-color: rgba(255, 255, 255, 0.2); 
-  backdrop-filter: blur(10px); /* Efecto de desenfoque */
-  padding-top: 20px;
-  padding-bottom: 10px;
-  padding-right: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.navbar-logo {
-  color: #00ff6e; /* Color de acento para el logo */
-  width: 64px; /* Ajusta el tamaño del logo */
-  height: 64px;
-  border: 5px solid #34583c;
-  border-radius: 10px;
-  box-sizing: border-box;
-  margin-left: 10px; 
-  transition: transform 0.3s ease;
-}
-
-.navbar-logo:hover {
-  transform: scale(1.1); /* Efecto de zoom al pasar el ratón */
-}
-
-.navbar-links {
-  display: flex;
-  gap: 2.5rem;
-  align-items: center;
-}
-
-.navbar-links a {
-  color: #111213;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-.navbar-links a:hover {
-  color: #42e16f;
-}
-
-.btn-contact {
-  background-color: #42e16f;
-  color: #ffffff !important;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  transition: background-color 0.5s ease, transform 0.5s ease;
-}
-
-.btn-contact:hover {
-  background-color: #00821c;
-  transform: scale(1.05) ;
-}
-
-/* Estilos para el menú responsive (botón de hamburguesa) */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 25px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.menu-toggle .bar {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background-color: #010101;
-  transition: all 0.3s ease;
-  border-radius: 2px;
-}
-
-/* Animación del botón de hamburguesa */
-.menu-toggle.active .bar:nth-child(1) {
-  transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.menu-toggle.active .bar:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.active .bar:nth-child(3) {
-  transform: rotate(45deg) translate(-5px, -6px);
-}
-
-/* Media Queries para responsividad */
-@media (max-width: 768px) {
-  .navbar-links {
-    display: none;
-    flex-direction: column;
+  .fondo {
+    background: linear-gradient(135deg, #2a7a2a, #38a14b);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
   }
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  .navbar-links.active {
-    position: absolute;
-    display: flex;
-    top: 95px;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.826); /* fondo semi-transparente */
-    backdrop-filter: blur(10px) saturate(120%);
-    padding: 1rem 0;
-    gap: 1.5rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(46, 46, 46, 0.699);
-  }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      
+    }
 
-  .menu-toggle {
-    display: flex;
-  }
-}
-</style>
+    .navbar-container {
+      background-color: #ffffff5f;
+      backdrop-filter: blur(10px) saturate(120%);
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .navbar-logo {
+      width: 100%;
+       max-width: 64px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border: solid 5px rgb(69, 133, 69);
+    }
+
+    .navbar-logo:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+
+    /* Menú de enlaces */
+    .navbar-links {
+      display: flex;
+      gap: 1.5rem;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+      overflow: hidden;
+      max-height: none; /* para desktop */
+      opacity: 1;
+    }
+
+    .navbar-links a {
+      text-decoration: none;
+      color: #000000;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-links a.btn-contact {
+      background-color: #03c10c;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      font-weight: 600;
+    }
+
+    .navbar-links a.btn-contact:hover {
+      background-color: #ffffff;
+    }
+
+    .navbar-links a:hover {
+      color: #04db13;
+    }
+
+    /* Botón hamburguesa */
+    .menu-toggle {
+      display: none; /* oculto en desktop */
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      box-sizing: border-box;
+      z-index: 1100;
+    }
+
+    .menu-toggle .bar {
+      width: 100%;
+      height: 3px;
+      background-color: #333;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      transform-origin: 1px;
+    }
+
+    /* Animación botón hamburguesa activo */
+    .menu-toggle.active .bar:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active .bar:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+
+    /* Responsive: menú oculto y botón visible */
+    @media (max-width: 768px) {
+      .navbar-links {
+        flex-direction: column;
+        max-height: 0;
+        opacity: 0;
+        width: 100%;
+        background-color: #ffffffa0;
+        position: absolute;
+        top: 90px; /* altura navbar */
+        left: 0;
+        border-bottom: 1px solid #ddd;
+        transition: max-height 0.4s ease, opacity 0.4s ease;
+        overflow: hidden;
+      }
+
+      .navbar-links.open {
+        max-height: 500px; /* ajusta según contenido */
+        opacity: 1;
+      }
+
+      .navbar-links a {
+        padding: 1rem;
+        border-top: 1px solid #eee;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+  </style>
